@@ -1,9 +1,9 @@
 :root {
-  --bg: #040510;
-  --card: #0c0f23;
+  --bg: #050510;
+  --card: #0f1024;
   --muted: #a9adc4;
-  --accent: #6fffd0;
-  --accent-2: #80aaff;
+  --accent: #7cf7c5;
+  --accent-2: #8ab6ff;
   --text: #f5f7ff;
   --border: rgba(255, 255, 255, 0.08);
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
@@ -16,9 +16,9 @@
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at 18% 20%, rgba(111, 255, 208, 0.08), transparent 26%),
-    radial-gradient(circle at 80% 12%, rgba(128, 170, 255, 0.08), transparent 22%),
-    radial-gradient(circle at 55% 65%, rgba(255, 255, 255, 0.02), transparent 20%),
+  background: radial-gradient(circle at 20% 20%, rgba(124, 247, 197, 0.08), transparent 25%),
+    radial-gradient(circle at 80% 10%, rgba(138, 182, 255, 0.08), transparent 20%),
+    radial-gradient(circle at 60% 60%, rgba(255, 255, 255, 0.03), transparent 20%),
     var(--bg);
   color: var(--text);
   line-height: 1.7;
@@ -41,43 +41,25 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 7vw;
-  background: rgba(4, 5, 16, 0.86);
-  backdrop-filter: blur(12px);
+  padding: 22px 7vw;
+  background: rgba(5, 5, 16, 0.8);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.logo {
   font-weight: 700;
+  font-size: 1.2rem;
   letter-spacing: 0.03em;
 }
 
-.logo-mark {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-}
-
-.logo-mark svg {
-  width: 100%;
-  height: 100%;
-}
-
-.logo-text {
-  font-size: 1.1rem;
-}
-
-.logo-text span {
+.logo span {
   color: var(--accent);
 }
 
 nav {
   display: flex;
-  gap: 18px;
+  gap: 20px;
   font-weight: 500;
 }
 
@@ -96,7 +78,7 @@ nav a {
 .cta:hover {
   border-color: var(--accent);
   color: var(--text);
-  background: rgba(111, 255, 208, 0.08);
+  background: rgba(124, 247, 197, 0.08);
 }
 
 main {
@@ -129,7 +111,7 @@ main {
 
 .lede {
   color: var(--muted);
-  max-width: 780px;
+  max-width: 720px;
 }
 
 .hero__actions {
@@ -153,7 +135,7 @@ main {
 .primary {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: #04101a;
-  box-shadow: 0 15px 50px rgba(111, 255, 208, 0.15);
+  box-shadow: 0 15px 50px rgba(124, 247, 197, 0.15);
 }
 
 .primary:hover {
@@ -207,7 +189,7 @@ main {
 
 .badge {
   display: inline-flex;
-  background: rgba(111, 255, 208, 0.1);
+  background: rgba(124, 247, 197, 0.1);
   color: var(--accent);
   padding: 6px 12px;
   border-radius: 999px;
@@ -223,7 +205,7 @@ main {
 }
 
 .section__header {
-  max-width: 880px;
+  max-width: 840px;
 }
 
 .section__header h2 {
@@ -263,8 +245,7 @@ main {
 }
 
 .card p,
-.card ul,
-.muted {
+.card ul {
   color: var(--muted);
 }
 
@@ -278,7 +259,7 @@ main {
   gap: 6px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(128, 170, 255, 0.12);
+  background: rgba(138, 182, 255, 0.1);
   color: var(--accent-2);
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -298,7 +279,7 @@ main {
 }
 
 .gradient {
-  background: linear-gradient(145deg, rgba(111, 255, 208, 0.05), rgba(128, 170, 255, 0.08));
+  background: linear-gradient(145deg, rgba(124, 247, 197, 0.05), rgba(138, 182, 255, 0.08));
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 28px;
@@ -312,10 +293,6 @@ main {
 
 .grid.three {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.grid.two {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .highlight {
@@ -342,38 +319,8 @@ main {
   font-weight: 700;
 }
 
-.quick-facts .list-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-  margin-top: 8px;
-}
-
-.quick-facts strong {
-  display: block;
-  font-size: 0.95rem;
-  margin-bottom: 4px;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.tags span {
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
 .cta-panel {
-  background: linear-gradient(135deg, rgba(111, 255, 208, 0.12), rgba(128, 170, 255, 0.12));
+  background: linear-gradient(135deg, rgba(124, 247, 197, 0.12), rgba(138, 182, 255, 0.12));
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 24px;
@@ -431,15 +378,13 @@ main {
   margin: 0;
 }
 
-@media (max-width: 1080px) {
-  nav {
-    display: none;
-  }
-}
-
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .topbar nav {
+    display: none;
   }
 
   main {
