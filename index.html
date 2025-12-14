@@ -1,210 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quantum Click | Computational Drug Design</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quantum Click: Quantum-Accurate Computational Drug Design at High Throughput.">
+    <title>Quantum Click | Computational Drug Design</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --qc-primary: #0d2c4d; /* Deep Navy */
+            --qc-accent: #00d4ff; /* Quantum Cyan */
+            --qc-secondary: #f8f9fa;
+            --qc-text: #333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--qc-text);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+        .navbar-brand img {
+            height: 50px; /* Adjust based on your logo aspect ratio */
+        }
+        .nav-link {
+            color: var(--qc-primary);
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+        .nav-link:hover {
+            color: var(--qc-accent);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(13, 44, 77, 0.9), rgba(13, 44, 77, 0.8)), url('hero-bg.jpg'); /* REPLACE hero-bg.jpg */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .hero-lead {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        .btn-qc {
+            background-color: var(--qc-accent);
+            color: var(--qc-primary);
+            padding: 12px 30px;
+            font-weight: 700;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-qc:hover {
+            background-color: #fff;
+            color: var(--qc-primary);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            color: var(--qc-primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            border: 1px solid #eef0f2;
+            padding: 2rem;
+            border-radius: 8px;
+            height: 100%;
+            transition: transform 0.3s;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--qc-accent);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--qc-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Products Section */
+        .bg-light-blue {
+            background-color: #f4f8fb;
+        }
+        .product-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--qc-primary);
+        }
+        .product-box.secondary {
+            border-left: 5px solid var(--qc-accent);
+        }
+
+        /* Stats */
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--qc-accent);
+        }
+        .stat-label {
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--qc-primary);
+            color: white;
+            padding: 3rem 0;
+        }
+        footer a {
+            color: var(--qc-accent);
+            text-decoration: none;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .section-heading { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="logo">Quantum <span>Click</span></div>
-    <nav>
-      <a href="#products">Products</a>
-      <a href="#technology">Technology</a>
-      <a href="#use-cases">Use cases</a>
-      <a href="#contact">Contact</a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <!-- LOGO PLACEHOLDER: Ensure logo.png is in the same folder -->
+                <img src="logo.png" alt="Quantum Click Logo" onerror="this.style.display='none'">
+                <span class="ms-2 fw-bold text-dark" style="font-size: 1.5rem;">Quantum Click</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#technology">Technology</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#science">Validation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <a class="cta" href="#contact">Talk to us</a>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero__content">
-        <p class="eyebrow">Computational drug design, accelerated</p>
-        <h1>Design better therapeutics with quantum-inspired ML</h1>
-        <p class="lede">Quantum Click blends physics-based simulation with modern machine learning to discover drug candidates faster. We partner with pharma and academic teams, and license our AWS-hosted platform with hands-on training.</p>
-        <div class="hero__actions">
-          <a class="primary" href="#products">See how we help</a>
-          <a class="secondary" href="#technology">Explore the stack</a>
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Quantum Accuracy at <br>High-Throughput Speed</h1>
+            <p class="hero-lead">
+                Bridging the gap between fast docking and accurate quantum mechanics. 
+                We predict protein-ligand binding affinities with near-DFT fidelity to accelerate drug discovery.
+            </p>
+            <a href="#contact" class="btn-qc">Partner With Us</a>
         </div>
-        <div class="stats">
-          <div>
-            <span class="number">10x</span>
-            <span class="label">faster hit-to-lead cycles</span>
-          </div>
-          <div>
-            <span class="number">50M+</span>
-            <span class="label">molecule variations screened</span>
-          </div>
-          <div>
-            <span class="number">AWS-native</span>
-            <span class="label">secure cloud deployment</span>
-          </div>
+    </header>
+
+    <!-- The Problem & Solution -->
+    <section id="technology">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h5 class="section-title">The Challenge</h5>
+                    <h2 class="section-heading">The Accuracy Gap in Virtual Screening</h2>
+                    <p>
+                        Computational drug discovery faces a fundamental bottleneck. Classical docking methods are fast but often unreliable, leading to high false-positive rates and costly experimental failures. 
+                    </p>
+                    <p>
+                        Conversely, Quantum Mechanics (QM) methods are accurate but too computationally expensive for millions of molecules. The industry needs a solution that offers <strong>quantum rigor at practical scales.</strong>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Placeholder for abstract tech illustration -->
+                    <div class="p-5 bg-light-blue rounded text-center text-muted">
+                        <i class="fas fa-chart-line fa-4x mb-3"></i>
+                        <br>Docking often yields < 10% hit rates.<br>
+                        Quantum Click aims to fix this.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center mb-4">
+                    <h5 class="section-title">The Solution</h5>
+                    <h2 class="section-heading">Hybrid ML + Orbital-Free DFT</h2>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-atom feature-icon"></i>
+                        <h4>Electronic Description</h4>
+                        <p>Unlike force fields, we use a symmetry-aware machine-learning density solver to approximate quantum electron distributions with near-DFT fidelity.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-bolt feature-icon"></i>
+                        <h4>Unmatched Speed</h4>
+                        <p>We reduce computation time from ~144 seconds (standard DFT) to <strong>under 1 second</strong> per structure, enabling the screening of ~1 million compounds per day.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-crosshairs feature-icon"></i>
+                        <h4>Reliable Re-Ranking</h4>
+                        <p>We accurately re-rank the millions of ligands emerging from docking campaigns, identifying the true binders that classical tools miss.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hero__card">
-        <div class="badge">What we deliver</div>
-        <h3>Physics-aware molecular design</h3>
-        <p>Hybrid generative models enriched with docking, quantum mechanics, and ADMET prediction to produce candidates ready for synthesis.</p>
-        <ul>
-          <li>Customizable pipelines for small molecules</li>
-          <li>Secure workspaces & audit-ready notebooks</li>
-          <li>Interactive design studio for medicinal chemists</li>
-        </ul>
-      </div>
     </section>
 
-    <section id="products" class="section">
-      <div class="section__header">
-        <p class="eyebrow">Solutions</p>
-        <h2>Two ways to work with Quantum Click</h2>
-        <p class="subtitle">Whether you need an expert partner or a platform your team can own, we align with your discovery goals.</p>
-      </div>
-      <div class="cards two-column">
-        <article class="card">
-          <div class="pill">Product</div>
-          <h3>Drug discovery partnerships</h3>
-          <p>We co-develop candidates with pharma and academic medicinal chemists, from target validation through lead optimization.</p>
-          <ul>
-            <li>Joint project planning with clear milestones</li>
-            <li>Modeling that incorporates your proprietary data safely</li>
-            <li>Synthesis-ready proposals with in vitro priorities</li>
-            <li>Regular design reviews with your project leads</li>
-          </ul>
-          <div class="cta-row">
-            <a class="primary" href="#contact">Schedule a discovery call</a>
-            <span class="note">Ideal for teams that want a hands-on partner.</span>
-          </div>
-        </article>
-        <article class="card">
-          <div class="pill">Product</div>
-          <h3>Software licensing on AWS</h3>
-          <p>Deploy the Quantum Click stack in your own AWS environment, with guided onboarding and user training.</p>
-          <ul>
-            <li>Managed reference architecture for secure deployment</li>
-            <li>Interactive UI plus API/SDK access for automation</li>
-            <li>Onboarding sessions for scientists and ML teams</li>
-            <li>Ongoing support, updates, and model refreshes</li>
-          </ul>
-          <div class="cta-row">
-            <a class="secondary" href="#contact">Request a platform demo</a>
-            <span class="note">Bring state-of-the-art tools to your pipeline.</span>
-          </div>
-        </article>
-      </div>
-    </section>
+    <!-- Products & Services -->
+    <section id="products" class="bg-light-blue">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h5 class="section-title">Our Products</h5>
+                <h2 class="section-heading">Flexible Engagement Models</h2>
+            </div>
 
-    <section id="technology" class="section gradient">
-      <div class="section__header">
-        <p class="eyebrow">Technology</p>
-        <h2>Built for molecular accuracy and speed</h2>
-        <p class="subtitle">Our platform fuses quantum-inspired simulation, active learning, and scalable cloud orchestration.</p>
-      </div>
-      <div class="grid three">
-        <article class="card compact">
-          <h4>Hybrid modeling</h4>
-          <p>Combines docking, QM/MM, and generative models to propose structures that respect chemistry and synthetic feasibility.</p>
-        </article>
-        <article class="card compact">
-          <h4>Data-aware pipelines</h4>
-          <p>Securely ingest your assays to retrain models, with governance and lineage so every decision is traceable.</p>
-        </article>
-        <article class="card compact">
-          <h4>AWS-native architecture</h4>
-          <p>Elastic compute, isolated VPC deployments, and simple integration with your LIMS, ELN, and data lakes.</p>
-        </article>
-      </div>
-      <div class="highlight">
-        <div>
-          <h3>Hands-on training included</h3>
-          <p>Licensing customers receive guided enablement for medicinal chemists, data scientists, and IT. From day one, teams learn to run virtual screens, optimize leads, and automate reporting.</p>
+            <div class="row">
+                <!-- Partnership Model -->
+                <div class="col-lg-6">
+                    <div class="product-box">
+                        <h3><i class="fas fa-handshake me-2 text-primary"></i> Partnerships</h3>
+                        <p class="lead mt-3">Co-development for Pharma & Biotech</p>
+                        <hr>
+                        <p>We collaborate directly with pharmaceutical and academic medicinal chemists to accelerate hit-to-lead optimization.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Custom pipeline integration</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Access to proprietary hit-identification protocols</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Dedicated scientific support from our team</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Inquire about Partnerships</a>
+                    </div>
+                </div>
+
+                <!-- Licensing Model -->
+                <div class="col-lg-6">
+                    <div class="product-box secondary">
+                        <h3><i class="fas fa-cloud me-2 text-info"></i> Software Licensing</h3>
+                        <p class="lead mt-3">SaaS & AWS Deployment</p>
+                        <hr>
+                        <p>License the Quantum Click software to run within your own infrastructure or via AWS, empowering your internal teams.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-info me-2"></i> Secure AWS deployment</li>
+                            <li class="mb-2"><i class="fas fa-check text-info me-2"></i> Comprehensive user training included</li>
+                            <li class="mb-2"><i class="fas fa-check text-info me-2"></i> API access for computational chemists</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-info mt-3 text-dark">Request a Demo</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="checklist">
-          <div><span>✓</span>Role-specific workshops</div>
-          <div><span>✓</span>Shared playbooks and notebooks</div>
-          <div><span>✓</span>Slack/Teams support with our scientists</div>
+    </section>
+
+    <!-- Scientific Validation -->
+    <section id="science" style="background-color: var(--qc-primary);">
+        <div class="container">
+            <div class="text-center mb-5 text-white">
+                <h5 class="section-title" style="color: var(--qc-accent);">Validation</h5>
+                <h2 class="section-heading">Proven Performance</h2>
+            </div>
+            
+            <div class="row text-white text-center">
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number">1.2</div>
+                    <div class="stat-label">kcal/mol Mean Deviation<br>(S22 Benchmark)</div>
+                    <p class="small mt-2 text-white-50">vs >4 kcal/mol for classical force fields</p>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number">&lt;1s</div>
+                    <div class="stat-label">Compute Time Per Complex</div>
+                    <p class="small mt-2 text-white-50">Reduced from 144s using our Small-Cell Protocol</p>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Screening Capacity</div>
+                    <p class="small mt-2 text-white-50">Molecules per day throughput</p>
+                </div>
+            </div>
+
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-8 text-white">
+                    <p>
+                        Quantum Click has been benchmarked against the S22 set for hydrogen-bonded dimers and tested on JNK3 protein–ligand complexes. Our method consistently matches or outperforms XTB while running orders of magnitude faster.
+                    </p>
+                    <p>
+                        <em>Patent Pending: "Computer implemented method for quantum mechanical binding affinity scoring" (US 63/272,543).</em>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="use-cases" class="section">
-      <div class="section__header">
-        <p class="eyebrow">Use cases</p>
-        <h2>Where Quantum Click excels</h2>
-        <p class="subtitle">Designed for small molecule discovery across therapeutic areas.</p>
-      </div>
-      <div class="grid three">
-        <article class="card compact">
-          <h4>Hit discovery</h4>
-          <p>Rapid virtual screening and prioritized synthesis lists guided by ADMET profiles and novelty scoring.</p>
-        </article>
-        <article class="card compact">
-          <h4>Lead optimization</h4>
-          <p>Multi-objective design that balances potency, selectivity, solubility, and developability metrics.</p>
-        </article>
-        <article class="card compact">
-          <h4>Indication expansion</h4>
-          <p>Repurpose scaffolds for adjacent targets using transfer learning and structure-based insights.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section cta-panel">
-      <div>
-        <h2>Ready to collaborate?</h2>
-        <p>Partner with us on a program or bring the Quantum Click platform to your team.</p>
-      </div>
-      <div class="cta-row">
-        <a class="primary" href="#contact">Start the conversation</a>
-        <a class="secondary" href="mailto:hello@quantumclick.ai">Email us</a>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2>Let’s design the next generation of medicines</h2>
-        <p class="subtitle">Tell us about your target or team and we’ll share how Quantum Click can help.</p>
-        <div class="contact__info">
-          <div>
-            <h4>Talk with us</h4>
-            <p><a href="mailto:hello@quantumclick.ai">hello@quantumclick.ai</a></p>
-          </div>
-          <div>
-            <h4>Deployment</h4>
-            <p>AWS-hosted with secure customer VPC options</p>
-          </div>
-          <div>
-            <h4>Headquarters</h4>
-            <p>Boston & remote-first</p>
-          </div>
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h5 class="section-title">The Team</h5>
+                <h2 class="section-heading">Scientific Leadership</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card text-center h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Michele Pavanello</h5>
+                            <p class="text-muted">Innovator & Dept Chair, Rutgers Physics</p>
+                            <p class="card-text small">Leading the development of the orbital-free DFT and ML integration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card text-center h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">George Dial</h5>
+                            <p class="text-muted">Bloowraith</p>
+                            <p class="card-text small">Business strategy and commercialization development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card text-center h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Jessica Martinez</h5>
+                            <p class="text-muted">Research Team</p>
+                            <p class="card-text small">Lead on customer discovery and market validation (NSF I-Corps).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="contact__card">
-        <h3>What to expect</h3>
-        <ol>
-          <li>Discovery call to align on targets and timelines</li>
-          <li>Data and security review for partnership or licensing</li>
-          <li>Pilot engagement with measurable milestones</li>
-        </ol>
-        <p class="note">We move fast, but stay rigorous. Every engagement includes transparent reporting and reproducible experiments.</p>
-      </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="logo">Quantum <span>Click</span></div>
-    <div class="footer__links">
-      <a href="#products">Products</a>
-      <a href="#technology">Technology</a>
-      <a href="#use-cases">Use cases</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <p class="footer__note">Computational drug design for teams that want results.</p>
-  </footer>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-heading">Get in Touch</h2>
+                    <p class="lead mb-5">
+                        Interested in licensing Quantum Click or discussing a partnership? 
+                        Contact our team to schedule a demo or pilot study.
+                    </p>
+                    
+                    <div class="card p-5 border-0 shadow">
+                        <div class="row">
+                            <div class="col-md-6 text-start">
+                                <h5>Contact Information</h5>
+                                <p class="mb-1"><strong>Email:</strong> <a href="mailto:m.pavanello@rutgers.edu">m.pavanello@rutgers.edu</a></p>
+                                <p class="mb-1"><strong>Location:</strong> Newark, NJ</p>
+                            </div>
+                            <div class="col-md-6 text-start mt-4 mt-md-0">
+                                <h5>For Investors & Partners</h5>
+                                <p class="small">
+                                    We have completed the NSF I-Corps National program and are currently validating pilots with industry partners.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2025 Quantum Click. All Rights Reserved.</p>
+            <p class="small text-white-50">Rutgers University / Physics Department</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
